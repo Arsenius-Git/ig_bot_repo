@@ -3,6 +3,7 @@ WORKDIR /main
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
+RUN python -c "from transformers import pipeline; pipeline('zero-shot-classification', model='joeddav/xlm-roberta-large-xnli')"
 
 COPY . .
 EXPOSE 8000
