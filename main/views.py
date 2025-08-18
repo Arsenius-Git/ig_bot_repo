@@ -9,7 +9,7 @@ from .models import IgModel
 from.serializers import IgSerializer
 
 # Create your views here.
-classifier = pipeline("zero-shot-classification", model="joeddav/xlm-roberta-large-xnli")
+
 class IgViewSet(viewsets.ModelViewSet):
     queryset = IgModel.objects.all()
     serializer_class = IgSerializer
@@ -21,6 +21,8 @@ class IgViewSet(viewsets.ModelViewSet):
         saved_instance = serializer.instance
         user_message = saved_instance.message
         sender_id = saved_instance.sender
+
+        classifier = pipeline("zero-shot-classification", model="joeddav/xlm-roberta-large-xnli")
 
         # labels
         candidate_labels = ["greeting","make an appointment", "information about appointment date",
