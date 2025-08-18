@@ -3,7 +3,6 @@ WORKDIR /main
 
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
-RUN python -c "from transformers import pipeline; pipeline('sentiment-analysis', model='blanchefort/rubert-base-cased-sentiment')"
 
 COPY . .
 EXPOSE 8000
